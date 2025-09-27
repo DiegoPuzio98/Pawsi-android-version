@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 35 25% 96%; /* Light beige */
+    --foreground: 25 50% 15%; /* Dark brown */
+
+    --card: 35 20% 98%; /* Very light beige */
+    --card-foreground: 25 50% 15%; /* Dark brown */
+
+    --popover: 35 20% 98%; /* Very light beige */
+    --popover-foreground: 25 50% 15%; /* Dark brown */
+
+    --primary: 25 45% 25%; /* Rich brown */
+    --primary-foreground: 35 25% 96%; /* Light beige */
+
+    --secondary: 30 15% 88%; /* Medium beige */
+    --secondary-foreground: 25 45% 25%; /* Rich brown */
+
+    --muted: 30 12% 92%; /* Light beige-gray */
+    --muted-foreground: 25 25% 45%; /* Medium brown */
+
+    --accent: 28 20% 85%; /* Warm beige */
+    --accent-foreground: 25 45% 25%; /* Rich brown */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 35 25% 96%;
+
+    --border: 30 8% 85%; /* Subtle beige border */
+    --input: 30 8% 85%; /* Subtle beige border */
+    --ring: 25 45% 25%; /* Rich brown ring */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Red asterisks for required fields */
+  label:has(+ input[required])::after,
+  label:has(+ textarea[required])::after,
+  label:has(+ select[required])::after,
+  label:has(+ [role="combobox"][required])::after,
+  label[for] + *[required] ~ label::after,
+  label:contains("*")::after {
+    content: " *";
+    color: hsl(var(--destructive));
+  }
+
+  /* Toast dark beige styling */
+  .toaster [data-sonner-toast] {
+    background-color: hsl(30 20% 25%) !important;
+    border-color: hsl(30 15% 35%) !important;
+    color: hsl(35 25% 96%) !important;
+  }
+  
+  .toaster [data-sonner-toast][data-type="success"] {
+    background-color: hsl(120 20% 25%) !important;
+    border-color: hsl(120 15% 35%) !important;
+  }
+  
+  .toaster [data-sonner-toast][data-type="error"] {
+    background-color: hsl(0 20% 25%) !important;
+    border-color: hsl(0 15% 35%) !important;
+  }
+}
+/* Safe area for iOS / Android edge-to-edge screens */
+html, body, #root {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  box-sizing: border-box;
+}

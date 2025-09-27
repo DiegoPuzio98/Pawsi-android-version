@@ -1,0 +1,6 @@
+{
+  "appId": "com.pawsi.app",
+  "appName": "Pawsi",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
